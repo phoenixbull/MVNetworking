@@ -9,13 +9,22 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MVNetworkingManagerResponsesDelegate {
                             
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
+        var swiftApplicationManager = NetworkingManagerSingleton.sharedInstance
+        
+        let JSONObject = [
+            "userName" : "petrograd",
+            "password" : "p"
+        ]
+        
+        
+        swiftApplicationManager.POSTData("http://ec2-54-237-141-89.compute-1.amazonaws.com:8080/trendingservices/api/user/login", httpBodyDictionary: JSONObject)
         return true
     }
 
@@ -41,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func responseDidComeBack() {
+        println("response came back")
+    }
 }
 

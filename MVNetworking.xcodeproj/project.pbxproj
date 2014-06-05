@@ -12,6 +12,7 @@
 		4CBDAE81193E4C1C005F031D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBDAE7F193E4C1C005F031D /* Main.storyboard */; };
 		4CBDAE83193E4C1C005F031D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBDAE82193E4C1C005F031D /* Images.xcassets */; };
 		4CBDAE8F193E4C1C005F031D /* MVNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBDAE8E193E4C1C005F031D /* MVNetworkingTests.swift */; };
+		4CBDAE99193E4C5D005F031D /* MVNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBDAE98193E4C5D005F031D /* MVNetworkingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		4CBDAE88193E4C1C005F031D /* MVNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBDAE8D193E4C1C005F031D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CBDAE8E193E4C1C005F031D /* MVNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVNetworkingTests.swift; sourceTree = "<group>"; };
+		4CBDAE98193E4C5D005F031D /* MVNetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVNetworkingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				4CBDAE7B193E4C1C005F031D /* AppDelegate.swift */,
 				4CBDAE7D193E4C1C005F031D /* ViewController.swift */,
+				4CBDAE98193E4C5D005F031D /* MVNetworkingManager.swift */,
 				4CBDAE7F193E4C1C005F031D /* Main.storyboard */,
 				4CBDAE82193E4C1C005F031D /* Images.xcassets */,
 				4CBDAE79193E4C1C005F031D /* Supporting Files */,
@@ -210,6 +213,7 @@
 			files = (
 				4CBDAE7E193E4C1C005F031D /* ViewController.swift in Sources */,
 				4CBDAE7C193E4C1C005F031D /* AppDelegate.swift in Sources */,
+				4CBDAE99193E4C5D005F031D /* MVNetworkingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +403,7 @@
 				4CBDAE94193E4C1C005F031D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4CBDAE95193E4C1C005F031D /* Build configuration list for PBXNativeTarget "MVNetworkingTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +412,7 @@
 				4CBDAE97193E4C1C005F031D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
