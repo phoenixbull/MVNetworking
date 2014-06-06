@@ -8,9 +8,10 @@
 
 import Foundation
 
-protocol MVNetworkingManagerResponsesDelegate {
-    func responseDidComeBack ()
+protocol MVNetworkingManagerResponsesDelegate /*protocol1*/ {
+    func comeBackWithResponse(responseString:AnyObject)
 }
+
 
 
 class NetworkingManagerSingleton {
@@ -30,10 +31,13 @@ class NetworkingManagerSingleton {
             return Static.instance!;
         }
     }
+
+    
     
     func POSTData (urlStringForConnection:String, httpBodyDictionary:Dictionary <String, String>){
+        
         let sampleUrl : NSURL = .URLWithString(urlStringForConnection)
-        var request = NSMutableURLRequest(URL: sampleUrl)
+        let request = NSMutableURLRequest(URL: sampleUrl)
         let queue = NSOperationQueue()
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         let session = NSURLSession(configuration: config)
@@ -45,18 +49,16 @@ class NetworkingManagerSingleton {
         
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(httpBodyDictionary, options: NSJSONWritingOptions(),error: &localClassErrorNetworking)
         request.HTTPMethod = "POST"
-        println("request is \(request.HTTPMethod)")
         
         let task : NSURLSessionDataTask = session.dataTaskWithRequest( request, completionHandler:{ (data : NSData!, response: NSURLResponse!, error : NSError!) -> Void in
-
-            let byteString : AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &localClassErrorNetworking)
-
-                println("data string is : \(byteString)")
-                //Need Delegate
-//            var delegate : MVNetworkingManagerResponsesDelegate
-//                delegate.responseDidComeBack()
+            
+            let byteString : NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &localClassErrorNetworking) as NSDictionary
+            
+            let dictionaryFromNSDictionaryJSON:Dictionary = byteString
+            
+                self.delegate?.comeBackWithResponse(dictionaryFromNSDictionaryJSON)
             })
-        self.delegate?.responseDidComeBack()
+        
         task.resume()
     }
 

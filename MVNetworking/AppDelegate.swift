@@ -12,20 +12,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, MVNetworkingManagerResponsesDelegate {
                             
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
         var swiftApplicationManager = NetworkingManagerSingleton.sharedInstance
-        
+        swiftApplicationManager.delegate = self
+    
         let JSONObject = [
             "userName" : "petrograd",
             "password" : "p"
         ]
         
-        
         swiftApplicationManager.POSTData("http://ec2-54-237-141-89.compute-1.amazonaws.com:8080/trendingservices/api/user/login", httpBodyDictionary: JSONObject)
+        
         return true
+    }
+    
+    
+    func comeBackWithResponse(responseString: AnyObject) {
+        
+        println("data string is : \(responseString)")
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -50,8 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MVNetworkingManagerRespon
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func responseDidComeBack() {
-        println("response came back")
-    }
+    
 }
 
